@@ -16,29 +16,14 @@ method      POST
 
 Router.post("/signup", async(req,res) => {
     try {
-        const { email, password, fullname, phoneNumber } = req.body.credentials;
-
-        //check whether email or phonenumber exists
-        const checkByEmail = await UserModel.findOne({ email });
-        const checkByPhone = await UserModel.findOne({ phoneNumber });
-
-        if(checkByEmail || checkByPhone ) {
-            return res.json({error: "User already exists"})
-        }
-
-        //hashing and salting
-        const bcrptSalt = await bcrypt.genSalt(8);
-
-        const hashedPassword = await bcrypt.hash(password, bcrptSalt);
-
+        await UserModel.findEmailAndPhone(req.body.credentials)
+ 
         // database
-        await UserModel.create({
-            ...req.body.credentials,
-            password: hashedPassword
-        }); // .create is used to create feild inside 
+        const newUser = await UserModel.create({...req.body.credentials,});
+         // .create is used to create feild inside 
 
         //JWT Auth token
-        const token = jwt.sign({user: {fullname, email}}, "ZomatoApp")
+        const token = newUser.generateJwtToken()
 
         return res.status(200).json({token});
     }
@@ -51,3 +36,10 @@ export default Router;
 
 //hashing -> encrypting
 //salting -> repeating hashing to increase security
+
+//methods are used after creating an instance 
+//statics are used without crfeating an instance
+
+//example
+//UserModel.ourStatic()
+//CheckUserByEmail.ourMethods()
