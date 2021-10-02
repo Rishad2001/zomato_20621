@@ -24,6 +24,19 @@ UserSchema.statics.findEmailAndPhone = async ({ email, phoneNumber }) => {
     return false;
 };
 
+// line 27 to 38 is for sgnin
+UserSchema.statics.findByEmailAndPassword = async ({ email, password }) => {
+    //check whether the email exists
+    const user = await UserModel.findOne({email});
+    if(!user) throw new Error("User does not exist")
+    //compare password
+    const doesPasswordMatch = await bcrypt.compare(password, user.password);
+    if(!doesPasswordMatch) {
+        throw new Error("Invalid password");
+    }
+    return user;
+};
+
 UserSchema.methods.generateJwtToken = function() {
     return jwt.sign({user: this._id.toString()}, "ZomatoApp")
 }
