@@ -11,6 +11,9 @@ import ConnectDB from "./database/connection";
 
 //API
 import Auth from "./API/Auth";
+import Restaurant from "./API/Restaurant";
+import Food from "./API/Food"
+import Menu from "./API/Menu";
 
 //env variable
 require("dotenv").config();
@@ -27,9 +30,12 @@ zomato.use(passport.session());
 //passport configration
 googleAuthConfig(passport);
 
-//for application routes
+//for application routes  **micro services
 //localhost:4000/auth/signup
 zomato.use("/auth", Auth);
+zomato.use("/restaurant", Restaurant);
+zomato.use("/food", Food)
+zomato.use("/menu", Menu)
 
 zomato.get("/", (req,res) => res.json({ message: "setup Sucess Yay!!" }));
 

@@ -1,4 +1,5 @@
 import { RestaurantModel } from "../../database/allModels";
+import express from "express";
 
 const Router = express.Router();
 
@@ -22,7 +23,7 @@ Router.get("/", async(req,res) => {
 
 /*
 Route       /
-Des         Get Perticular Restaurant details
+Des         Get Perticular Restaurant details on id
 Params      _id
 Access      Public
 Method      GET
@@ -39,6 +40,28 @@ Router.get("/:_id", async(req,res) => {
 
         return res.json({restaurant});
     }   catch (error) {
+        return res.status(500).json({error: error.message});
+    }
+});
+
+/*
+Route       /search
+Des         Get  Restaurant details on search
+Params      none
+Body        searchString
+Access      Public
+Method      GET
+*/
+
+Router.get("/search", async(req,res) => {
+    try {
+        const {searchString} = req.bod;
+        const restaurnats = await RestaurantModel.find({
+            //$regex is used to find substring and $options: "i" is used to avoid case sensitivness
+            name: {$regex: searchString, $options: "i"},
+        });
+        return res.json({restaurnats});
+    }  catch (error) {
         return res.status(500).json({error: error.message});
     }
 });
