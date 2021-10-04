@@ -1,3 +1,4 @@
+/*
 import googleOAuth from "passport-google-oauth20";
 import passport from "passport";
 
@@ -43,6 +44,6 @@ export default (passport) => {
     passport.serialiazeUser((userData,done) => done(null, {...userData}));
     passport.deserializeUser((id, done) => done(null, id));
 }
-
+*/
 //passport is the authentication middleware 
 //instead of writing all these codes from scratch we can take the codes from google auth integration boilertemplate

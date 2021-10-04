@@ -65,7 +65,7 @@ params      None
 access      public
 method      GET
 */
-
+/*
 Router.get("/google", passport.authenticate("google",{
     scope: [
         "https://googleapis.com/auth/userinfo.profile",
@@ -80,13 +80,13 @@ params      None
 access      public
 method      GET
 */
-
+/*
 Router.get("/google/callback", passport.authenticate("google", {failureRedirect:"/"}),
 (req,res) => {
     return res.json({token: req.session.passport.user.token});
 }
 );
-
+*/
 
 export default Router;
 
