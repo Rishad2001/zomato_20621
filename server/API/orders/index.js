@@ -1,5 +1,11 @@
 import express from "express";
 import { OrderModel } from "../../database/allModels";
+import passport from "passport"; //is for authentication
+import { ValidateRestaurantId } from "../../validation/food";
+
+//validate
+import { ValidateRestaurantId } from "../../validation/food";
+import {ValidateFoodOrder} from "../../validation/order";
 
 const Router = express.Router();
 
@@ -11,8 +17,9 @@ Access      Public
 Method     GET
 */
 
-Router.get("/:_id", async(req,res) => {
+Router.get("/:_id",passport.authenticate("jwt", {session: false}), async(req,res) => {
     try {
+        await ValidateRestaurantId(req.params);
         const { _id } = req.params;
         const getOrders = await OrderModel.findOne({user: _id});
 
@@ -32,9 +39,11 @@ Access      Public
 Method     POST
 */
 
-Router.post("/new/:id", async(req,res) => {
+Router.post("/new/:_id", async(req,res) => {
     try {
-        const { id } = req.params;
+        await ValidateFoodOrder(req.body);
+        
+        const { _id } = req.params;
         const { orderDetails } = req.body;
         const addNewOrder = await OrderModel.findOneAndUpdate(
             {
@@ -49,7 +58,9 @@ Router.post("/new/:id", async(req,res) => {
         );
 
         return res.json({order: addNewOrder});
-    }  catch (error) {}
+    }  catch (error) {
+        return res.status(500).json({error: error.message});
+    }
 });
 
 export default Router;

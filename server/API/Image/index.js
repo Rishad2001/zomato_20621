@@ -3,6 +3,11 @@ import express from "express";
 import AWS from "aws-sdk";
 import multer from "multer"
 
+require('dotenv').config();
+
+//validation
+import { ValidateImageLocation } from "../../validation/image";
+
 //databasemodel
 import {ImageModel} from "../../database/allModels";
 
@@ -25,6 +30,7 @@ Method      POST
 
 Router.post("/",upload.single("file"), async(req,res) => {
     try {
+        await ValidateImageLocation(req.file);
         const file = req.file;
 
         //S3 bucket options

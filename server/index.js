@@ -5,6 +5,7 @@ import helmet from "helmet";
 
 //config
 //import googleAuthConfig from "./config/google.config"
+import routeConfig from "./config/routeconfig";
 
 //database connection
 import ConnectDB from "./database/connection";
@@ -17,6 +18,7 @@ import Menu from "./API/Menu";
 import Image from "./API/Image"
 import Order from "./API/orders"
 import Review from "./API/reviews"
+import passport from "passport";
 
 //env variable
 require("dotenv").config();
@@ -32,6 +34,8 @@ zomato.use(cors());
 
 //passport configration
 //googleAuthConfig(passport);
+routeConfig(passport);
+
 
 //for application routes  **micro services
 //localhost:4000/auth/signup
