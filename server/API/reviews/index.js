@@ -1,6 +1,9 @@
 import express from "express";
 import { ReviewModel } from "../../database/allModels";
 
+//validate
+import { ValidateReview } from "../../validation/reviews";
+
 const Router = express.Router();
 
 /*
@@ -14,6 +17,8 @@ Method     POST
 
 Router.post("/new", async(req,res) => {
     try {
+        await ValidateReview(req.body);
+        
         const { reviewData } = req.body;
 
         await ReviewModel.create(reviewData);
