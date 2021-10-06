@@ -1,7 +1,7 @@
 import express from "express";
 import { OrderModel } from "../../database/allModels";
 import passport from "passport"; //is for authentication
-import { ValidateRestaurantId } from "../../validation/food";
+
 
 //validate
 import { ValidateRestaurantId } from "../../validation/food";

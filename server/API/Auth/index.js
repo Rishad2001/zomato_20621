@@ -73,11 +73,11 @@ params      None
 access      public
 method      GET
 */
-/*
+
 Router.get("/google", passport.authenticate("google",{
     scope: [
-        "https://googleapis.com/auth/userinfo.profile",
-        "https://googleapis.com/auth/userinfo.email"
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email"
     ],
 }));
 
@@ -88,13 +88,13 @@ params      None
 access      public
 method      GET
 */
-/*
+
 Router.get("/google/callback", passport.authenticate("google", {failureRedirect:"/"}),
 (req,res) => {
     return res.json({token: req.session.passport.user.token});
 }
 );
-*/
+
 
 export default Router;
 
