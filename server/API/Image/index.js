@@ -30,7 +30,7 @@ Method      POST
 
 Router.post("/",upload.single("file"), async(req,res) => {
     try {
-        await ValidateImageLocation(req.file);
+       // await ValidateImageLocation(req.file);
         const file = req.file;
 
         //S3 bucket options
@@ -43,6 +43,7 @@ Router.post("/",upload.single("file"), async(req,res) => {
         };
 
         const uploadImage = await s3Upload(bucketOptions);
+        return res.status(200).json({ uploadImage });
 
     }  catch (error) {
         return res.status(500).json({error: error.message})
