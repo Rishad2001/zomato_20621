@@ -19,7 +19,7 @@ Method     GET
 
 Router.get("/:_id",passport.authenticate("jwt", {session: false}), async(req,res) => {
     try {
-        await ValidateRestaurantId(req.params);
+        //await ValidateRestaurantId(req.params);
         const { _id } = req.params;
         const getOrders = await OrderModel.findOne({user: _id});
 
