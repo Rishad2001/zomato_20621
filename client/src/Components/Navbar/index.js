@@ -26,34 +26,7 @@ const NavSm = () => {
         </div>
     </div>
 
-    {/** Delivery, Dining Out Nightlife*/}
-    <section className="fixed bottom-0 w-full">
-    <div className = "pt-9 flex items-center justify-start gap-4 bottom-0 ">
-        {/**Delivery */}
-        <div className="mb-5 hover:text-red-400 flex  ">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png"
-            className = "w-full h-full "
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Delivery</p>
-        </div>
-        
-        {/**Dinning Out */}
-        <div className="mb-5 hover:text-red-400 flex">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300  ">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png"
-            className = "w-full h-full position:relative"
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Dinning Out</p>
-        </div>
-        </div>
-    </section>
+   
     </section>
     </>
     )
@@ -82,34 +55,6 @@ const NavMd = () => {
         </div>
     </div>
 
-    {/** Delivery, Dining Out Nightlife*/}
-    <section className="fixed bottom-0 w-full">
-    <div className = "pt-9 flex items-center justify-evenly position:absolute bottom-0 ">
-        {/**Delivery */}
-        <div className="mb-5 hover:text-red-400 flex  ">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png"
-            className = "w-full h-full "
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Delivery</p>
-        </div>
-        
-        {/**Dinning Out */}
-        <div className="mb-5 hover:text-red-400 flex">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300  ">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png"
-            className = "w-full h-full position:relative"
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Dinning Out</p>
-        </div>
-        </div>
-    </section>
     </section>
     </>
     )
@@ -153,44 +98,7 @@ const NavLg = () => {
         </div>
     </div>
     
-    {/** Delivery, Dining Out Nightlife*/}
-    <div className = "pt-9 flex items-center justify-evenly  ">
-        {/**Delivery */}
-        <div className="mb-5 hover:text-red-400 flex  ">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png"
-            className = "w-full h-full "
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Delivery</p>
-        </div>
-        
-        {/**Dinning Out */}
-        <div className="mb-5 hover:text-red-400 flex">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300  ">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png"
-            className = "w-full h-full position:relative"
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Dinning Out</p>
-        </div>
-
-        {/**Nightlife */}
-        <div className="mb-5 hover:text-red-400 flex">
-        <div className ="w-9 h-9 bg-blue-200  rounded-full hover:bg-red-300 ">
-            <img 
-            src = "https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png"
-            className = "w-full h-full position:relative"
-            alt = "delivery image"
-            />
-            </div>
-            <p className="pl-4 font-black text-xl">Nightlife</p>
-        </div>
-    </div>
+   
      </section>
     </>
     )
