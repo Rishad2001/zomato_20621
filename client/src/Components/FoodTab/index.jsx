@@ -1,27 +1,58 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
+import { useParams,Link } from "react-router-dom";
 import { RiShoppingBag3Line } from "react-icons/ri"
 import { IoFastFoodOutline } from "react-icons/io5"
 import { BiDrink } from "react-icons/bi"
 
 const MobileTabs = () => {
+
+    const [allTypes, setAllTypes] = useState([
+        {
+            //for Delivery
+            id: `delivery`,
+            icon:  <RiShoppingBag3Line />,
+            name: "Delivery",
+            isActive: false
+            },
+            //for dining out
+            {
+                id: `dining`,
+                icon:  <IoFastFoodOutline />,
+                name: "Dining Out",
+                isActive: false
+            },
+                //for night life
+            {
+                id: `night`,
+                icon:  <BiDrink />,
+                name: "Nightlife",
+                isActive: false
+            },
+   ]);
+
+   const { type } = useParams();
+
     return (
         <>
-            <div className="lg:hidden fixed bottom-0 w-full z-10 bg-white shadow-lg p-3 flex justify-between md:justify-evenly text-gray-500 border">
-            <div className="flex flex-col items-center text-lg">
-                <RiShoppingBag3Line />
-                <h5>Delivery</h5>
+        <div className="lg:hidden fixed bottom-0 w-full z-10 bg-white shadow-lg p-3 flex justify-between md:justify-evenly text-gray-500 border">
+            {allTypes.map((items) => (
+            <Link to={`/${items.id}`}>
+                <div className={
+                type === items.id
+                ? "flex flex-col relative items-center text-lg text-zomato-400 "
+                : "flex flex-col items-center text-lg"
+            }>
+                <div 
+                className={
+                    type === items.id && "absolute -top-3 w-full h-2 border-t-2 border-zomato-400"
+                }
+                />
+                {items.icon}
+                <h5>{items.name}</h5>
             </div>
-
-            <div className="flex flex-col items-center text-lg">
-                <IoFastFoodOutline />
-                <h5>Dining Out</h5>
-            </div>
-
-            <div className="flex flex-col items-center text-lg">
-                <BiDrink />
-                <h5>Nightlife</h5>
-            </div>
-            </div>
+            </Link>
+           ))} 
+        </div>
         </>
     )
 }
