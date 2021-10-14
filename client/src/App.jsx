@@ -13,3 +13,9 @@ function App() {
 }
 
 export default App;
+
+//delivry
+//dining out
+//Nightlife
+
+//master ->url parameters for rendering 
